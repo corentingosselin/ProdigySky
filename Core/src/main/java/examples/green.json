@@ -1,0 +1,30 @@
+{
+  "spawn_costs": {},
+  "starts": [],
+  "spawners": {},
+  "carvers": {},
+  "features": [],
+  "surface_builder": "minecraft:grass",
+  "scale": 0.05,
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "effects": {
+    "sky_color": 65280,
+    "fog_color": 65280,
+    "water_color": 65280,
+    "water_fog_color": 65280,
+    "grass_color": 15112208,
+    "foliage_color": 15112208,
+    "particle": {
+      "probability": 0.8,
+      "options": "minecraft:dust",
+      "r":0.5,
+      "g": 0.8,
+      "b": 0.5,
+      "scale": 0.8
+    }
+  },
+  "precipitation": "none",
+  "category": "none",
+  "depth": 0.125
+}
