@@ -1,0 +1,8 @@
+name: ProdigySky
+version: 1.0
+author: cocoraid
+api-version: 1.16
+main: fr.cocoraid.prodigysky.ProdigySky
+depend:
+  - ProtocolLib
+

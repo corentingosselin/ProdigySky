@@ -1,0 +1,21 @@
+{
+  "spawn_costs": {},
+  "starts": [],
+  "spawners": {},
+  "carvers": {},
+  "features": [],
+  "surface_builder": "minecraft:grass",
+  "scale": 0.05,
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "effects": {
+    "sky_color": 16711935,
+    "fog_color": 16711935,
+    "water_color": 16711935,
+    "water_fog_color": 16711935
+  },
+  "precipitation": "none",
+  "category": "nether",
+  "depth": 0.125
+
+}
