@@ -1,3 +1,55 @@
-enabled-worlds:
-  - "world"
-  - "world2"
+custom_colors:
+  black:
+    fog: '000000'
+    sky: '000000'
+    water: '000000'
+    water_fog: '000000'
+  red:
+    fog: 'FF0000'
+    sky: 'FF0000'
+    water: 'FF0000'
+    water_fog: 'FF0000'
+  pink:
+    fog: 'E400FF'
+    sky: 'E400FF'
+    water: 'E400FF'
+    water_fog: 'E400FF'
+  orange:
+    fog: 'FF8B00'
+    sky: 'FF8B00'
+    water: 'FF8B00'
+    water_fog: 'FF8B00'
+  yellow:
+    fog: 'FFFB00'
+    sky: 'FFFB00'
+    water: 'FFFB00'
+    water_fog: 'FFFB00'
+  aqua:
+    fog: '00FFFF'
+    sky: '00FFFF'
+    water: '00FFFF'
+    water_fog: '00FFFF'
+  purple:
+    fog: '0008FF'
+    sky: '0008FF'
+    water: '0008FF'
+    water_fog: '0008FF'
+  green:
+    fog: '00FF0C'
+    sky: '00FF0C'
+    water: '00FF0C'
+    water_fog: '00FF0C'
+  multicolor:
+    fog: '00FF0C'
+    sky: '0008FF'
+    water: 'FFFB00'
+    water_fog: '00FF0C'
+    grass: 'E400FF'
+    foliage: 'FF0000'
+  blackout:
+    fog: '000000'
+    sky: '000000'
+    water: '000000'
+    water_fog: '000000'
+    grass: '000000'
+    foliage: '000000'

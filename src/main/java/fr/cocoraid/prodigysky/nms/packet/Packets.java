@@ -7,10 +7,4 @@ public interface Packets {
 
     public void sendFakeBiome(Player player);
 
-    public void setSmog(Player player);
-
-    public void restoreDefaultWorld(Player player);
-
-
-
 }

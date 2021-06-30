@@ -1,31 +1,32 @@
 package fr.cocoraid.prodigysky;
 
-import co.aikar.commands.BukkitCommandIssuer;
-import co.aikar.commands.ConditionFailedException;
 import co.aikar.commands.PaperCommandManager;
 import fr.cocoraid.prodigysky.commands.MainCMD;
 import fr.cocoraid.prodigysky.filemanager.Configuration;
-import fr.cocoraid.prodigysky.filemanager.CustomBiomes;
 import fr.cocoraid.prodigysky.listeners.EventListener;
 import fr.cocoraid.prodigysky.listeners.PacketListener;
 import fr.cocoraid.prodigysky.nms.NMS;
-import fr.prodigysky.api.ProdigySkyAPI;
+import fr.prodigysky.api.EffectDuration;
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class ProdigySky extends JavaPlugin {
+
 
 
     private PaperCommandManager manager;
     private static ProdigySky instance;
     private NMS nms;
     private Configuration configuration;
-    private CustomBiomes customBiomes;
+
     @Override
     public void onEnable() {
 
@@ -36,24 +37,11 @@ public class ProdigySky extends JavaPlugin {
         this.configuration = new Configuration(this);
         configuration.init();
         configuration.load();
-        this.customBiomes = new CustomBiomes(this);
 
         loadCommands();
 
-        Bukkit.getPluginManager().registerEvents(new EventListener(),this);
+        Bukkit.getPluginManager().registerEvents(new EventListener(), this);
         new PacketListener(this);
-
-        new BukkitRunnable() {
-
-            @Override
-            public void run() {
-
-
-
-            }
-        }.runTaskTimerAsynchronously(this, 20,20);
-
-
 
     }
 
@@ -81,37 +69,20 @@ public class ProdigySky extends JavaPlugin {
 
     private void loadCommands() {
         this.manager = new PaperCommandManager(this);
-        manager.getCommandConditions().addCondition(World.class, "worldEnabled", (c, exec, value) -> {
-            if (value == null) {
-                return;
-            }
-            if (!configuration.getEnabledWorlds().contains(value)) {
-                throw new ConditionFailedException("The world " + value.getName() + " is not added in the enabled world list !");
-            }
-        });
-
-        manager.getCommandConditions().addCondition(Player.class, "playerWorldEnabled", (c, exec, value) -> {
-            if (value == null) {
-                return;
-            }
-            if (!configuration.getEnabledWorlds().contains(value.getWorld())) {
-                throw new ConditionFailedException("The world " + value.getWorld().getName() + " is not added in the enabled world list !");
-            }
-        });
 
         manager.getCommandCompletions().registerAsyncCompletion("biomeName", c -> {
-            return customBiomes.getBiomes().keySet();
+            return getConfiguration().getBiomes().keySet();
+        });
+
+        manager.getCommandCompletions().registerAsyncCompletion("effectDuration", c -> {
+            return Arrays.stream(EffectDuration.values()).map(e -> e.name().toLowerCase()).collect(Collectors.toList());
         });
         manager.registerCommand(new MainCMD(this));
     }
 
 
-
-
-
-
-    public CustomBiomes getCustomBiomes() {
-        return customBiomes;
+    public Configuration getConfiguration() {
+        return configuration;
     }
 
     public static ProdigySky getInstance() {
@@ -122,7 +93,4 @@ public class ProdigySky extends JavaPlugin {
         return nms;
     }
 
-    public Configuration getConfiguration() {
-        return configuration;
-    }
 }
